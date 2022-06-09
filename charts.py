@@ -1,10 +1,30 @@
 import psutil
 import matplotlib
 import matplotlib.pyplot as plt
+from os import path
 import matplotlib.animation as animation
 from matplotlib import style
 style.use('fivethirtyeight')
 diskCount=len(psutil.disk_partitions())
+# print(psutil.virtual_memory()[2])
+# print(psutil.swap_memory())
+# print(psutil.disk_usage(path.realpath('/')))
+import ctypes
+import os
+import platform
+import sys
+
+def get_free_space_mb(dirname):
+    """Return folder/drive free space (in megabytes)."""
+    if platform.system() == 'Windows':
+        free_bytes = ctypes.c_ulonglong(0)
+        ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(dirname), None, None, ctypes.pointer(free_bytes))
+        return free_bytes.value / 2**30
+    else:
+        st = os.statvfs(dirname)
+        return st.f_bavail * st.f_frsize / 1024 / 1024
+print(get_free_space_mb('/'))
+# print(psutil.disk_partitions())
 # print(diskCount)
 totalGraphs=diskCount+3
 cols=3
@@ -60,6 +80,7 @@ def animateSwap(i):
 def diskSpaces():
     currRow=1
     currCol=0
+    
     for disk in psutil.disk_partitions():
         # print(currRow,currCol)
         hdd = psutil.disk_usage(disk[0])
