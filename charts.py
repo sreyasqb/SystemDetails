@@ -23,7 +23,7 @@ def get_free_space_mb(dirname):
     else:
         st = os.statvfs(dirname)
         return st.f_bavail * st.f_frsize / 1024 / 1024
-print(get_free_space_mb('/'))
+# print(get_free_space_mb('/'))
 # print(psutil.disk_partitions())
 # print(diskCount)
 totalGraphs=diskCount+3
@@ -108,11 +108,11 @@ def diskSpaces():
         ax[currRow,currCol+i].set_visible(False)
 
 
-# cpuAni=animation.FuncAnimation(fig, animateCpu,frames=60, interval=500,repeat=False)
-# ramAni=animation.FuncAnimation(fig, animateRamUsage,frames=60, interval=500,repeat=False)
-# swapAni=animation.FuncAnimation(fig, animateSwap,frames=60, interval=500,repeat=False)
-# diskSpaces()
-# plt.show()
+cpuAni=animation.FuncAnimation(fig, animateCpu,frames=60, interval=500,repeat=False)
+ramAni=animation.FuncAnimation(fig, animateRamUsage,frames=60, interval=500,repeat=False)
+swapAni=animation.FuncAnimation(fig, animateSwap,frames=60, interval=500,repeat=False)
+diskSpaces()
+plt.show()
 
     
 # print(psutil.virtual_memory()[2]) #RAM USAGE
