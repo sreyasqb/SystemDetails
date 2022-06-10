@@ -31,7 +31,8 @@ if len(args)>1:
     elif args[0]=='-s':
         if len(args)>1:
             os.system(f'py stats.py {args[1]}')
-        
+    
+  
 elif len(args)==1:
     if args[0]=='-m':
         print()
@@ -41,6 +42,29 @@ elif len(args)==1:
         print(colored(f'b - open spotify browser','green'))
         print(colored(f's - search for a particular song','green'))
         print()
+    if args[0]=='-s':
+        print()
+        print(colored('\x1b[6;30;42m' + 'STATS COMMANDS' + '\x1b[0m'))
+        print(colored(f'battery - battery stats','green'))
+        print(colored(f'cpu - cpu stats','green'))
+        print()
+    if args[0]=='game':
+        print(colored('\x1b[6;30;42m' + 'PYTHON OP!!!' + '\x1b[0m'))
+        os.system('py snake.py')
+        print(colored('\x1b[6;30;42m' + 'GAME OVER' + '\x1b[0m'))
+    if args[0]=='joke':
+        os.system('py jokes.py')
+
+else:
+    print()
+    print(colored('\x1b[6;30;42m' + 'COMMANDS' + '\x1b[0m'))
+    print(colored(f'-m for music','green'))
+    print(colored(f'-c for charts','green'))
+    print(colored(f'-s for stats','green'))
+    print(colored(f'game - play snake game','green'))
+    print(colored(f'joke - get a joke','green'))
+
+    
 
     
   
