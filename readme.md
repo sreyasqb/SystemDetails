@@ -8,3 +8,5 @@ pip install matplotlib
 pip install pyjokes
 pip install termcolor
 pip install sty
+pip install randfacts
+pip install GoogleNews
